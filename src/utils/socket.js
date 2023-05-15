@@ -1,6 +1,6 @@
 import { io } from "socket.io-client"
 import { toast } from "react-hot-toast"
-import Toast from "../components/layouts/Toast"
+import Toast from "../components/layout/Toast"
 
 const socket = io(import.meta.env.VITE_SERVER_URL, {
   autoConnect: false,

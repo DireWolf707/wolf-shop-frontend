@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client"
 import App from "./App.jsx"
-import AuthCheck from "./components/wrappers/AuthCheck"
+import AuthCheck from "./components/wrapper/AuthCheck"
 import { ThemeProvider } from "@mui/material"
 import { Provider as StoreProvider } from "react-redux"
 import { BrowserRouter as Router } from "react-router-dom"

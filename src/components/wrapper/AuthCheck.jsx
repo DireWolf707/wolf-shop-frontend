@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Stack } from "@mui/material"
 import FourSquares from "../loading/page/FourSquares"
 import { userApi } from "../../store"
-import Toast from "../layouts/Toast"
+import Toast from "../layout/Toast"
 import toast from "react-hot-toast"
 
 const authToastOptions = { id: "auth-check" }

@@ -1,5 +1,5 @@
 import toast from "react-hot-toast"
-import Toast from "../components/layouts/Toast"
+import Toast from "../components/layout/Toast"
 import { capitalize } from "@mui/material"
 
 const handleError400 = ({ message }, setFormErrors) => {

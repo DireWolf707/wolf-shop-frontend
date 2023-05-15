@@ -1,6 +1,6 @@
 import { useState, useRef } from "react"
 import FourSquares from "../components/loading/page/FourSquares"
-import UserAvatar from "../components/layouts/UserAvatar"
+import UserAvatar from "../components/layout/UserAvatar"
 import { Stack, TextField, Button, IconButton } from "@mui/material"
 import { userApi } from "../store"
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto"
