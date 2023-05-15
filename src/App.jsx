@@ -4,7 +4,7 @@ import LoggedInRoute from "./components/wrappers/LoggedInRoute"
 import SocketProvider from "./components/wrappers/SocketProvider"
 import { Stack } from "@mui/material"
 import { Routes, Route } from "react-router-dom"
-import { Home, Profile, Error404, Error500 } from "./pages"
+import { Home, Profile, Shop, Error404, Error500 } from "./pages"
 import { userApi } from "./store"
 
 const App = () => {
@@ -24,6 +24,7 @@ const App = () => {
           {/* Socket Enabled Routes */}
           <Route element={<SocketProvider />}></Route>
           {/* Socket Disabled Routes */}
+          <Route path="/shop" element={<Shop />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
         {/* Server Error (500) */}
