@@ -3,7 +3,7 @@ import { Player } from "@lottiefiles/react-lottie-player"
 
 const Home = () => {
   return (
-    <Stack flexGrow={1}>
+    <Stack flexGrow={1} justifyContent="center">
       <Player autoplay loop src="/assets/animations/home.json" style={{ height: "480px" }} />
     </Stack>
   )
