@@ -12,7 +12,7 @@ const App = () => {
   const user = profile.data
 
   return (
-    <Stack height="100vh" width="100vw" overflow="auto" bgcolor="#023020">
+    <Stack height="100vh" width="100vw" overflow="auto" bgcolor="#191924">
       <Navbar />
       {user && <Sidebar />}
 
