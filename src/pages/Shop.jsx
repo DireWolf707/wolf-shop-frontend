@@ -1,10 +1,13 @@
 import { useEffect } from "react"
 import { Stack } from "@mui/material"
-import { itemApi } from "../store"
+import { useSelector, itemApi } from "../store"
 import ItemList from "../components/item/ItemList"
+import ItemListSkeleton from "../components/item/skeleton/ItemListSkeleton"
+import Checkout from "../components/item/Checkout"
 import requestHandler from "../utils/requestHandler"
 
 const Shop = () => {
+  const { isCheckout } = useSelector((store) => store.checkout)
   const [fetchItems, { data }] = itemApi.useLazyGetItemListQuery()
 
   useEffect(() => {
@@ -14,7 +17,8 @@ const Shop = () => {
   return (
     <Stack flexGrow={1}>
       {data && <ItemList items={data.data} />}
-      {!data && "loading skeleton..."}
+      {!data && <ItemListSkeleton />}
+      {isCheckout && <Checkout />}
     </Stack>
   )
 }
