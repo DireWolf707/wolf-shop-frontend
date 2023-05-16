@@ -1,6 +1,6 @@
 import { Stack, Box, Typography } from "@mui/material"
-import BuyNowButton from "./BuyNowButton"
-import AddToCartButton from "./AddToCartButton"
+import BuyNowButton from "./button/BuyNowButton"
+import AddToCartButton from "./button/AddToCartButton"
 
 const ItemList = ({ items }) => {
   return (

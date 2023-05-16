@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
-import itemApi from "../../store/apis/itemApi"
-import requestHandler from "../../utils/requestHandler"
-import { useDispatch, checkoutSliceActions } from "../../store"
+import itemApi from "../../../store/apis/itemApi"
+import requestHandler from "../../../utils/requestHandler"
+import { useDispatch, checkoutSliceActions } from "../../../store"
 
 const BuyNowButton = ({ itemId }) => {
   const dispatch = useDispatch()
