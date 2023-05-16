@@ -1,17 +1,17 @@
 import { useRef, useEffect } from "react"
-import { Stack, Box, Button, Typography, IconButton, useMediaQuery } from "@mui/material"
-import { navHeight, navLinks } from "../../utils/constants"
+import { Stack, Box, IconButton, useMediaQuery } from "@mui/material"
+import NavbarLinks from "./navLinks/NavbarLinks"
+import { publicNavLinks, privateNavLinks, navHeight } from "../../utils/constants"
 import { Link } from "react-router-dom"
 import MenuIcon from "@mui/icons-material/Menu"
-import GoogleIcon from "@mui/icons-material/Google"
 import { useDispatch, userApi, dataSliceActions } from "../../store"
-import requestHandler from "../../utils/requestHandler"
+import LoginButton from "./button/LoginButton"
+import LogoutButton from "./button/LogoutButton"
 
 const Navbar = () => {
   const topRef = useRef(null)
   const dispatch = useDispatch()
   const isSmall = useMediaQuery((theme) => theme.breakpoints.only("xs"))
-  const [logout, { isLoading }] = userApi.useLogoutMutation()
   const {
     data: { data: user = null },
   } = userApi.useFetchProfileQuery()
@@ -19,8 +19,6 @@ const Navbar = () => {
   useEffect(() => {
     dispatch(dataSliceActions.setTopRef(topRef))
   }, [])
-
-  const logoutHandler = () => requestHandler(logout().unwrap(), "logging out", "logged out")
 
   return (
     <>
@@ -45,39 +43,18 @@ const Navbar = () => {
           <Box component="img" src="/assets/logo.svg" height="36px" />
         </Link>
 
-        {user &&
-          (isSmall ? (
-            <IconButton onClick={() => dispatch(dataSliceActions.toggleSidebar(true))}>
-              <MenuIcon />
-            </IconButton>
-          ) : (
-            <Stack flexDirection="row" gap={2}>
-              {navLinks.map((link, idx) => (
-                <Stack key={idx} flexDirection="row" alignItems="center" gap={0.3}>
-                  <link.Icon />
-                  <Link to={link.href}>
-                    <Typography fontFamily="Righteous" fontSize="14px">
-                      {link.title}
-                    </Typography>
-                  </Link>
-                </Stack>
-              ))}
+        {isSmall ? (
+          <IconButton onClick={() => dispatch(dataSliceActions.toggleSidebar(true))}>
+            <MenuIcon />
+          </IconButton>
+        ) : (
+          <Stack flexDirection="row" gap={0.8}>
+            <NavbarLinks links={publicNavLinks} />
 
-              <Button variant="contained" color="error" onClick={logoutHandler} disabled={isLoading}>
-                logout
-              </Button>
-            </Stack>
-          ))}
+            {user && <NavbarLinks links={privateNavLinks} />}
 
-        {!user && (
-          <Button
-            startIcon={<GoogleIcon />}
-            variant="contained"
-            color="primary"
-            href={`${import.meta.env.VITE_SERVER_URL}/user/login/google`}
-          >
-            login
-          </Button>
+            {user ? <LogoutButton /> : <LoginButton />}
+          </Stack>
         )}
       </Stack>
 
