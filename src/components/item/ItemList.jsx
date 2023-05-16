@@ -7,12 +7,13 @@ const ItemList = ({ items }) => {
     <Stack flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="strech" gap={2} p="20px">
       {items.map((item) => (
         <Stack key={item.id} width="300px" bgcolor="#fff" borderRadius="14px">
-          <Box component="img" src={item.thumbnail} height="240px" borderBottom="4px solid #000"  borderRadius="12px" m="9px" sx={{ objectFit: "cover" }} />
+          <Box component="img" src={item.thumbnail} height="240px" bgcolor="grey" borderBottom="4px solid #000"  borderRadius="12px" m="9px" sx={{ objectFit: "cover" }} />
 
           <Stack m="6px 14px 14px 14px">
             <Typography color="#000" fontFamily="Righteous" fontSize="24px">
               {item.name}
             </Typography>
+            
             <Typography color="#000" fontFamily="Alkatra" fontSize="16px">
               {item.brand}
             </Typography>
@@ -24,8 +25,8 @@ const ItemList = ({ items }) => {
             </Typography>
 
             <Stack flexDirection="row" gap={1} p="4px">
-              <BuyNowButton item={item} />
-              <AddToCartButton item={item} />
+              <BuyNowButton itemId={item.id} />
+              <AddToCartButton itemId={item.id} />
             </Stack>
           </Stack>
         </Stack>
