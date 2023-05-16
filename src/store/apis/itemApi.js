@@ -23,6 +23,13 @@ export default createApi({
           method: "GET",
         }),
       }),
+
+      buyNow: builder.mutation({
+        query: ({ itemId }) => ({
+          url: `${itemId}`,
+          method: "POST",
+        }),
+      }),
     }
   },
 })
