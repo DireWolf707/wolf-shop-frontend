@@ -1,8 +1,14 @@
 import { Button } from "@mui/material"
 import useCheckout from "../../../hooks/useCheckout"
+import { userApi } from "../../../store"
 
 const BuyNowButton = ({ item }) => {
   const { checkoutHandler } = useCheckout()
+  const {
+    data: { data: user = null },
+  } = userApi.useFetchProfileQuery()
+
+  if (!user) return
 
   return (
     <Button onClick={() => checkoutHandler([item])} variant="contained" color="error" fullWidth>

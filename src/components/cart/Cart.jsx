@@ -1,15 +1,19 @@
 import { Stack, Box, Typography, IconButton, Drawer, Button } from "@mui/material"
-import { useDispatch, useSelector, cartSliceActions } from "../../store"
+import { useDispatch, useSelector, cartSliceActions, userApi } from "../../store"
 import CloseIcon from "@mui/icons-material/Close"
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp"
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
 import useCheckout from "../../hooks/useCheckout"
+import LoginButton from "../layout/button/LoginButton"
 import { Player } from "@lottiefiles/react-lottie-player"
 
 const Cart = () => {
   const dispatch = useDispatch()
   const { isCartOpen, cart } = useSelector((store) => store.cart)
   const { checkoutHandler } = useCheckout(true)
+  const {
+    data: { data: user = null },
+  } = userApi.useFetchProfileQuery()
 
   const closeCart = () => dispatch(cartSliceActions.toggleCart(false))
 
@@ -107,9 +111,13 @@ const Cart = () => {
             </Typography>
           </Stack>
 
-          <Button onClick={cartCheckout} variant="contained" color="error">
-            Checkout
-          </Button>
+          {user ? (
+            <Button onClick={cartCheckout} variant="contained" color="error">
+              Checkout
+            </Button>
+          ) : (
+            <LoginButton />
+          )}
         </Stack>
       ) : (
         <Stack alignItems="center" mt="26px">
