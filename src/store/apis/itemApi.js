@@ -19,15 +19,16 @@ export default createApi({
 
       getItemDetail: builder.query({
         query: ({ itemId }) => ({
-          url: `${itemId}`,
+          url: `/${itemId}`,
           method: "GET",
         }),
       }),
 
-      buyNow: builder.mutation({
-        query: ({ itemId }) => ({
-          url: `${itemId}`,
+      checkout: builder.mutation({
+        query: ({ body }) => ({
+          url: "/checkout",
           method: "POST",
+          body,
         }),
       }),
     }
