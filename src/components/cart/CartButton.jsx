@@ -18,7 +18,8 @@ const CartButton = ({ gap = 0, textTransform = "lowercase", closeSidebar = null 
           badgeContent={cart.reduce((acc, item) => acc + item.qty, 0)}
           max={99}
           color="primary"
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          anchorOrigin={{ vertical: "top", horizontal: "left" }}
+          sx={{ px: "1.3px" }}
         >
           <ShoppingCartIcon />
         </Badge>
