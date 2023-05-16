@@ -39,7 +39,7 @@ const Sidebar = () => {
     >
       <Box component="img" src="/assets/logo-sidebar.svg" height="160px" />
 
-      <Stack alignItems="start" mx="6px" gap={0.8} overflow="auto">
+      <Stack alignItems="start" px="8px" gap={0.8} overflow="auto">
         <SidebarLinks closeSidebar={closeSidebar} links={publicNavLinks} />
 
         {user && <SidebarLinks closeSidebar={closeSidebar} links={privateNavLinks} />}
