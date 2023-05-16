@@ -34,7 +34,8 @@ const ItemList = ({ items }) => {
             </Typography>
 
             <Stack flexDirection="row" gap={1} p="4px">
-              <BuyNowButton itemId={item.id} />
+              <BuyNowButton item={item} />
+
               <AddToCartButton item={item} />
             </Stack>
           </Stack>
