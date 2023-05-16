@@ -137,9 +137,9 @@ const Cart = () => {
         </Stack>
       ) : (
         <Stack alignItems="center" mt="26px">
-          <Player autoplay loop src="/assets/animations/order/empty-cart.json" style={{ height: "480px" }} />
+          <Player autoplay loop src="/assets/animations/order/empty-cart.json" style={{ height: "420px" }} />
 
-          <Typography fontFamily="Sedgwick Ave Display" fontSize="32px">
+          <Typography fontFamily="Sedgwick Ave Display" sx={{ fontSize: { xs: "28px", sm: "32px" } }}>
             Your cart is empty 🙁
           </Typography>
         </Stack>
