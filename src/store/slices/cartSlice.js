@@ -18,17 +18,25 @@ export const cartSlice = createSlice({
       const prevItem = state.cart.find((item) => item.id === newItem.id)
 
       if (prevItem) prevItem.qty++
-      else state.cart.append({ ...newItem, qty: 1 })
+      else state.cart.push({ ...newItem, qty: 1 })
     },
 
     removeItem(state, action) {
-      state.cart.filter((item) => {
+      state.cart = state.cart.filter((item) => {
         if (item.id !== action.payload) return true
         if (item.qty <= 1) return false
 
-        item.qty++
+        item.qty--
         return true
       })
+    },
+
+    clearItem(state, action) {
+      state.cart = state.cart.filter((item) => item.id !== action.payload)
+    },
+
+    clearCart(state, action) {
+      state.cart = []
     },
   },
 })
