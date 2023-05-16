@@ -9,7 +9,7 @@ const Checkout = () => {
   const { isOrderPreping, isOrderConfirmed } = useSelector((store) => store.checkout)
 
   let component = <></>
-  
+
   if (isOrderPreping)
     component = (
       <Stack alignItems="center">

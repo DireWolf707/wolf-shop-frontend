@@ -17,7 +17,9 @@ const Shop = () => {
   return (
     <Stack flexGrow={1}>
       {data && <ItemList items={data.data} />}
+
       {!data && <ItemListSkeleton />}
+
       {isCheckout && <Checkout />}
     </Stack>
   )
