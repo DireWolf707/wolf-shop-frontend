@@ -7,7 +7,7 @@ import requestHandler from "../../utils/requestHandler"
 
 const Sidebar = () => {
   const dispatch = useDispatch()
-  const { sidebar: open } = useSelector((store) => store.data)
+  const { isSidebarOpen } = useSelector((store) => store.data)
   const isSmall = useMediaQuery((theme) => theme.breakpoints.only("xs"))
   const [logout, { isLoading }] = userApi.useLogoutMutation()
 
@@ -18,14 +18,14 @@ const Sidebar = () => {
   }
 
   useEffect(() => {
-    if (!isSmall && open) closeSidebar()
+    if (!isSmall && isSidebarOpen) closeSidebar()
   }, [isSmall])
 
   return (
     <Drawer
       anchor="left"
       variant="temporary"
-      open={open}
+      open={isSidebarOpen}
       onClose={closeSidebar}
       PaperProps={{
         sx: {

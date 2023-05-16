@@ -5,12 +5,12 @@ export const dataSlice = createSlice({
 
   initialState: {
     topRef: null,
-    sidebar: false,
+    isSidebarOpen: false,
   },
 
   reducers: {
     toggleSidebar(state, action) {
-      state.sidebar = action.payload
+      state.isSidebarOpen = action.payload
     },
 
     setTopRef(state, action) {
