@@ -5,7 +5,7 @@ import LoggedInRoute from "./components/wrapper/LoggedInRoute"
 import { Stack } from "@mui/material"
 import { Routes, Route } from "react-router-dom"
 import { Home, Profile, Shop, Error404, Error500 } from "./pages"
-import Cart from "./components/item/Cart"
+import Cart from "./components/cart/Cart"
 
 const App = () => {
   return (

@@ -3,7 +3,7 @@ import { Stack } from "@mui/material"
 import { useSelector, itemApi } from "../store"
 import ItemList from "../components/item/ItemList"
 import ItemListSkeleton from "../components/item/skeleton/ItemListSkeleton"
-import Checkout from "../components/item/Checkout"
+import Checkout from "../components/checkout/Checkout"
 import requestHandler from "../utils/requestHandler"
 
 const Shop = () => {

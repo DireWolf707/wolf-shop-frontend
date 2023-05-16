@@ -1,6 +1,6 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import StoreIcon from "@mui/icons-material/Store"
-import CartButton from "../components/item/button/CartButton"
+import CartButton from "../components/cart/CartButton"
 
 export const navHeight = "96px"
 

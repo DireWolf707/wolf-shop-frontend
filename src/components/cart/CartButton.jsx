@@ -1,6 +1,6 @@
 import { Stack, Button, Badge, Typography } from "@mui/material"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-import { useDispatch, cartSliceActions } from "../../../store"
+import { useDispatch, cartSliceActions } from "../../store"
 
 const CartButton = ({ gap = 0, textTransform = "lowercase", closeSidebar = null }) => {
   const dispatch = useDispatch()
