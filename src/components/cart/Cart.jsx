@@ -71,8 +71,8 @@ const Cart = () => {
                 alignItems="center"
                 bgcolor="rgb(236,236,236)"
                 px="12px"
-                py="6px"
                 position="relative"
+                sx={{ py: { xs: "16px", sm: "6px" } }}
               >
                 <IconButton
                   onClick={() => dispatch(cartSliceActions.clearItem(item.id))}
@@ -81,8 +81,13 @@ const Cart = () => {
                   <CloseIcon sx={{ bgcolor: "red", borderRadius: "100%" }} />
                 </IconButton>
 
-                <Stack flexDirection="row" gap={3.5}>
-                  <Box component="img" src={item.thumbnail} height="90px" width="90px" borderRadius="6px" />
+                <Stack flexGrow={1} gap={3.5} sx={{ flexDirection: { xs: "column", sm: "row" } }}>
+                  <Box
+                    component="img"
+                    src={item.thumbnail}
+                    borderRadius="6px"
+                    sx={{ height: { xs: "120px", sm: "90px" }, width: { xs: "180px", sm: "90px" } }}
+                  />
 
                   <Stack gap={1}>
                     <Stack>
@@ -118,11 +123,11 @@ const Cart = () => {
           </AnimatePresence>
 
           <Stack flexDirection="row" justifyContent="space-between" alignItems="center" borderTop="4px solid #fff" px="16px" py="24px">
-            <Typography fontFamily="Sedgwick Ave Display" fontSize="36px" color="red">
+            <Typography fontFamily="Sedgwick Ave Display" color="red" sx={{ fontSize: { xs: "28px", sm: "36px" } }}>
               Total
             </Typography>
 
-            <Typography fontFamily="Righteous" fontSize="28px" fontWeight="bold" color="red">
+            <Typography fontFamily="Righteous" fontWeight="bold" color="red" sx={{ fontSize: { xs: "18px", sm: "28px" } }}>
               Rs: {cart.reduce((acc, item) => acc + item.price * item.qty, 0)}
             </Typography>
           </Stack>
