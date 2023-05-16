@@ -6,6 +6,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
 import useCheckout from "../../hooks/useCheckout"
 import LoginButton from "../layout/button/LoginButton"
 import { Player } from "@lottiefiles/react-lottie-player"
+import { motion, AnimatePresence } from "framer-motion"
+import { cartItemVariant, stagerChildrenVariant, animateConstants } from "../../utils/animations"
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -47,59 +49,73 @@ const Cart = () => {
       </Stack>
 
       {cart.length ? (
-        <Stack gap={2} p="12px 36px 36px 36px" overflow="auto" mx="auto" sx={{ width: { xs: "100%", md: "840px" } }}>
-          {cart.map((item) => (
-            <Stack
-              key={item.id}
-              flexDirection="row"
-              justifyContent="space-between"
-              alignItems="center"
-              bgcolor="rgb(236,236,236)"
-              px="12px"
-              py="6px"
-              position="relative"
-            >
-              <IconButton
-                onClick={() => dispatch(cartSliceActions.clearItem(item.id))}
-                sx={{ position: "absolute", top: 0, left: 0, transform: "translate(-50%,-50%)" }}
+        <Stack
+          component={motion.div}
+          variants={stagerChildrenVariant}
+          {...animateConstants}
+          gap={2}
+          p="12px 36px 36px 36px"
+          overflow="auto"
+          mx="auto"
+          sx={{ width: { xs: "100%", md: "840px" } }}
+        >
+          <AnimatePresence>
+            {cart.map((item) => (
+              <Stack
+                key={item.id}
+                component={motion.div}
+                variants={cartItemVariant}
+                layout
+                flexDirection="row"
+                justifyContent="space-between"
+                alignItems="center"
+                bgcolor="rgb(236,236,236)"
+                px="12px"
+                py="6px"
+                position="relative"
               >
-                <CloseIcon sx={{ bgcolor: "red", borderRadius: "100%" }} />
-              </IconButton>
+                <IconButton
+                  onClick={() => dispatch(cartSliceActions.clearItem(item.id))}
+                  sx={{ position: "absolute", top: 0, left: 0, transform: "translate(-50%,-50%)" }}
+                >
+                  <CloseIcon sx={{ bgcolor: "red", borderRadius: "100%" }} />
+                </IconButton>
 
-              <Stack flexDirection="row" gap={3.5}>
-                <Box component="img" src={item.thumbnail} height="90px" width="90px" borderRadius="6px" />
+                <Stack flexDirection="row" gap={3.5}>
+                  <Box component="img" src={item.thumbnail} height="90px" width="90px" borderRadius="6px" />
 
-                <Stack gap={1}>
-                  <Stack>
+                  <Stack gap={1}>
+                    <Stack>
+                      <Typography color="#000" fontFamily="Righteous" fontSize="20px">
+                        {item.name}
+                      </Typography>
+                      <Typography color="#000" fontFamily="Alkatra" fontSize="16px">
+                        {item.brand}
+                      </Typography>
+                    </Stack>
+
                     <Typography color="#000" fontFamily="Righteous" fontSize="20px">
-                      {item.name}
-                    </Typography>
-                    <Typography color="#000" fontFamily="Alkatra" fontSize="16px">
-                      {item.brand}
+                      Rs. {item.price}
                     </Typography>
                   </Stack>
+                </Stack>
 
-                  <Typography color="#000" fontFamily="Righteous" fontSize="20px">
-                    Rs. {item.price}
+                <Stack alignItems="center">
+                  <IconButton onClick={() => dispatch(cartSliceActions.addItem(item))}>
+                    <KeyboardArrowUpIcon sx={{ fill: "#2258E7" }} />
+                  </IconButton>
+
+                  <Typography fontFamily="Righteous" color="#000">
+                    {item.qty}
                   </Typography>
+
+                  <IconButton onClick={() => dispatch(cartSliceActions.removeItem(item.id))}>
+                    <KeyboardArrowDownIcon sx={{ fill: "#2258E7" }} />
+                  </IconButton>
                 </Stack>
               </Stack>
-
-              <Stack alignItems="center">
-                <IconButton onClick={() => dispatch(cartSliceActions.addItem(item))}>
-                  <KeyboardArrowUpIcon sx={{ fill: "#2258E7" }} />
-                </IconButton>
-
-                <Typography fontFamily="Righteous" color="#000">
-                  {item.qty}
-                </Typography>
-
-                <IconButton onClick={() => dispatch(cartSliceActions.removeItem(item.id))}>
-                  <KeyboardArrowDownIcon sx={{ fill: "#2258E7" }} />
-                </IconButton>
-              </Stack>
-            </Stack>
-          ))}
+            ))}
+          </AnimatePresence>
 
           <Stack flexDirection="row" justifyContent="space-between" alignItems="center" borderTop="4px solid #fff" px="16px" py="24px">
             <Typography fontFamily="Sedgwick Ave Display" fontSize="36px" color="red">
