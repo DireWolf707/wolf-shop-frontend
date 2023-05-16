@@ -31,7 +31,7 @@ const useCheckout = (cartCheckout = false) => {
   const checkoutHandler = useCallback(async (items) => {
     dispatch(checkoutSliceActions.setCheckoutStart())
 
-    const body = { itemIds: items.map((item) => item.id) }
+    const body = { items: items.map(({ id, qty }) => ({ id, qty })) }
     const data = await requestHandler(checkout({ body }).unwrap(), "preparing order", "order prepared")
 
     dispatch(checkoutSliceActions.setCheckoutPayment())
