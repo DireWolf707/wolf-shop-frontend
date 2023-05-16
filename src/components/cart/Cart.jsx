@@ -107,7 +107,7 @@ const Cart = () => {
             </Typography>
 
             <Typography fontFamily="Righteous" fontSize="28px" fontWeight="bold" color="red">
-              Rs: {cart.reduce((acc, item) => acc + item.price, 0)}
+              Rs: {cart.reduce((acc, item) => acc + item.price * item.qty, 0)}
             </Typography>
           </Stack>
 
