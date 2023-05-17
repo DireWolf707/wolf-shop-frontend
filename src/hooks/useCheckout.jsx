@@ -6,32 +6,22 @@ const useCheckout = (cartCheckout = false) => {
   const dispatch = useDispatch()
   const [checkout] = itemApi.useCheckoutMutation()
 
-  const options = ({ orderId, customerId }) => ({
+  const options = ({ orderId }) => ({
     key: import.meta.env.VITE_RAZORPAY_KEY_ID,
     name: "Direwolf Corp",
     image: "/assets/favicon.svg",
     order_id: orderId,
-    prefill: {
-      name: "Gaurav Kumar",
-      email: "gaurav.kumar@example.com",
-      contact: "9000090000",
-    },
-    customer_id: customerId,
-    remember_customer: true,
     handler: (resp) => {
       if (cartCheckout) dispatch(cartSliceActions.clearCart())
       dispatch(checkoutSliceActions.setCheckoutComplete())
     },
-    modal: {
-      animation: false,
-      ondismiss: () => dispatch(checkoutSliceActions.resetOrderState()),
-    },
+    modal: { ondismiss: () => dispatch(checkoutSliceActions.resetOrderState()) },
   })
 
-  const checkoutHandler = useCallback(async (items) => {
+  const checkoutHandler = useCallback(async (cart) => {
     dispatch(checkoutSliceActions.setCheckoutStart())
 
-    const body = { items: items.map(({ id, qty }) => ({ id, qty })) }
+    const body = { cart: cart.map(({ id, qty }) => ({ id, qty })) }
     const data = await requestHandler(checkout({ body }).unwrap(), "preparing order", "order prepared")
 
     dispatch(checkoutSliceActions.setCheckoutPayment())
