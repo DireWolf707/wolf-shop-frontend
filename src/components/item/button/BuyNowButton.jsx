@@ -11,7 +11,7 @@ const BuyNowButton = ({ item }) => {
   if (!user) return
 
   return (
-    <Button onClick={() => checkoutHandler([item])} variant="contained" color="error" fullWidth>
+    <Button onClick={() => checkoutHandler([{ ...item, qty: 1 }])} variant="contained" color="error" fullWidth>
       Buy Now
     </Button>
   )
