@@ -1,13 +1,17 @@
 import Navbar from "./components/layout/Navbar"
 import Sidebar from "./components/layout/Sidebar"
 import LoggedInRoute from "./components/wrapper/LoggedInRoute"
-// import SocketProvider from "./components/wrapper/SocketProvider"
+import SocketProvider from "./components/wrapper/SocketProvider"
 import { Stack } from "@mui/material"
 import { Routes, Route } from "react-router-dom"
 import { Home, Profile, Shop, Error404, Error500 } from "./pages"
+import { useSelector } from "./store"
 import Cart from "./components/cart/Cart"
+import Checkout from "./components/checkout/Checkout"
 
 const App = () => {
+  const { isCheckout } = useSelector((store) => store.checkout)
+
   return (
     <Stack height="100vh" width="100vw" overflow="auto" bgcolor="#191924">
       <Navbar />
@@ -15,6 +19,8 @@ const App = () => {
       <Sidebar />
 
       <Cart />
+
+      {isCheckout && <Checkout />}
 
       <Routes>
         {/* Public Routes */}
