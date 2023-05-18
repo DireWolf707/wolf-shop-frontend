@@ -18,16 +18,18 @@ const useCheckout = (cartCheckout = false) => {
     modal: { ondismiss: () => dispatch(checkoutSliceActions.resetOrderState()) },
   })
 
-  const checkoutHandler = useCallback(async (cart) => {
+  const checkoutHandler = useCallback((cart) => {
     dispatch(checkoutSliceActions.setCheckoutStart())
 
     const body = { cart: cart.map(({ id, qty }) => ({ id, qty })) }
-    const data = await requestHandler(checkout({ body }).unwrap(), "preparing order", "order prepared")
+    requestHandler(checkout({ body }).unwrap(), "preparing order", "order prepared")
+      .then((data) => {
+        dispatch(checkoutSliceActions.setCheckoutPayment())
 
-    dispatch(checkoutSliceActions.setCheckoutPayment())
-
-    const rzp = new Razorpay(options(data.data))
-    rzp.open()
+        const rzp = new Razorpay(options(data.data))
+        rzp.open()
+      })
+      .catch(() => dispatch(checkoutSliceActions.resetOrderState()))
   }, [])
 
   return { checkoutHandler }
