@@ -18,7 +18,6 @@ const ItemList = ({ items }) => {
               borderBottom="4px solid #000"
               borderRadius="12px"
               m="9px"
-              sx={{ objectFit: "cover" }}
             />
 
             <Stack m="6px 14px 14px 14px">
