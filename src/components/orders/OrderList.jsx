@@ -5,7 +5,7 @@ import { Player } from "@lottiefiles/react-lottie-player"
 
 const OrderList = ({ orders }) => {
   return (
-    <Stack mx="auto" p="36px" sx={{ width: { xs: "100%", md: "780px" } }}>
+    <Stack flexGrow={1} mx="auto" p="36px" sx={{ width: { xs: "100%", md: "780px" } }}>
       <Typography fontFamily="Sedgwick Ave Display" fontSize="36px" textAlign="center" mb="4px">
         Order List
       </Typography>
@@ -68,7 +68,7 @@ const OrderList = ({ orders }) => {
             </Accordion>
           ))
         ) : (
-          <Stack justifyContent="center" alignItems="center">
+          <Stack flexGrow={1} justifyContent="center" alignItems="center">
             <Player autoplay loop src="/assets/animations/order/empty-orders.json" style={{ height: "380px" }} />
 
             <Typography fontFamily="Sedgwick Ave Display" sx={{ fontSize: { xs: "28px", sm: "32px" } }}>
