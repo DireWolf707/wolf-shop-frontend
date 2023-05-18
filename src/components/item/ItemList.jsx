@@ -2,6 +2,7 @@ import { Stack, Box, Typography } from "@mui/material"
 import BuyNowButton from "./button/BuyNowButton"
 import AddToCartButton from "./button/AddToCartButton"
 import ItemListSkeleton from "./skeleton/ItemListSkeleton"
+import { Link } from "react-router-dom"
 
 const ItemList = ({ items }) => {
   return (
@@ -21,9 +22,11 @@ const ItemList = ({ items }) => {
             />
 
             <Stack m="6px 14px 14px 14px">
-              <Typography color="#000" fontFamily="Righteous" fontSize="24px">
-                {item.name}
-              </Typography>
+              <Link to={item.id}>
+                <Typography color="#000" fontFamily="Righteous" fontSize="24px">
+                  {item.name}
+                </Typography>
+              </Link>
 
               <Typography color="#000" fontFamily="Alkatra" fontSize="16px">
                 {item.brand}
