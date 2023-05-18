@@ -1,4 +1,5 @@
 import { Stack, Typography } from "@mui/material"
+import ItemDetailSkeleton from "./skeleton/ItemDetailSkeleton"
 import ItemCarousel from "./ItemCarousel"
 import BuyNowButton from "./button/BuyNowButton"
 import AddToCartButton from "./button/AddToCartButton"
@@ -22,6 +23,7 @@ const ItemDetail = ({ item }) => {
                 <Typography fontFamily="Righteous" fontSize="36px">
                   {item.name}
                 </Typography>
+
                 <Typography fontFamily="Alkatra" fontSize="22px">
                   {item.brand}
                 </Typography>
@@ -52,7 +54,7 @@ const ItemDetail = ({ item }) => {
           </Stack>
         </Stack>
       ) : (
-        <></>
+        <ItemDetailSkeleton />
       )}
     </Stack>
   )
