@@ -1,27 +1,16 @@
-import { Stack, Typography, Box } from "@mui/material"
+import { Stack, Typography } from "@mui/material"
 import BuyNowButton from "./button/BuyNowButton"
 import AddToCartButton from "./button/AddToCartButton"
+import ItemCarousel from "./ItemCarousel"
 
 const ItemDetail = ({ item }) => {
-  console.log(item)
   return (
-    <Stack m="auto" p="36px">
+    <Stack m="auto" p="28px">
       {item ? (
         <Stack sx={{ flexDirection: { xs: "column", md: "row" }, gap: { xs: 0, md: 4 } }}>
-          <Box
-            component="img"
-            src={item.thumbnail}
-            bgcolor="grey"
-            borderBottom="4px solid #000"
-            borderRadius="12px"
-            sx={{
-              height: { xs: "360px", md: "400px" },
-              width: { xs: "280px", md: "310px" },
-            }}
-            alignSelf="center"
-          />
+          <ItemCarousel images={[item.thumbnail, ...item.images.map((img) => img.link)]} />
 
-          <Stack gap={4} pt="26px" sx={{ width: { xs: "100%", md: "480px" } }}>
+          <Stack gap={4} pt="26px" sx={{ width: { xs: "100%", md: "460px" } }}>
             <Stack gap={4}>
               <Stack>
                 <Typography fontFamily="Righteous" fontSize="36px">
