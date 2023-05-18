@@ -3,6 +3,7 @@ import { Stack, Typography, Backdrop, Button } from "@mui/material"
 import { useSelector } from "../../store"
 import { Player } from "@lottiefiles/react-lottie-player"
 import { useDispatch, checkoutSliceActions } from "../../store"
+import { Link } from "react-router-dom"
 
 const Checkout = () => {
   const dispatch = useDispatch()
@@ -31,11 +32,13 @@ const Checkout = () => {
         />
         <Player autoplay loop src="/assets/animations/order/order-confirmed.json" style={{ height: "460px" }} />
 
-        <Button onClick={() => dispatch(checkoutSliceActions.resetOrderState())}>
-          <Typography variant="button" fontFamily="Sedgwick Ave Display" fontSize="28px">
-            Check your order 😎
-          </Typography>
-        </Button>
+        <Link to="/orders">
+          <Button onClick={() => dispatch(checkoutSliceActions.resetOrderState())}>
+            <Typography variant="button" fontFamily="Sedgwick Ave Display" fontSize="28px">
+              Check your order 😎
+            </Typography>
+          </Button>
+        </Link>
       </Stack>
     )
 
