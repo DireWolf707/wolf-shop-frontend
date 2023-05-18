@@ -1,6 +1,7 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import StoreIcon from "@mui/icons-material/Store"
 import CartButton from "../components/cart/CartButton"
+import InventoryIcon from '@mui/icons-material/Inventory';
 
 export const navHeight = "96px"
 
@@ -23,6 +24,12 @@ export const publicNavLinks = [
 ]
 
 export const privateNavLinks = [
+  {
+    title: "orders",
+    type: navType.link,
+    href: "/orders",
+    Icon: InventoryIcon,
+  },
   {
     title: "profile",
     type: navType.link,

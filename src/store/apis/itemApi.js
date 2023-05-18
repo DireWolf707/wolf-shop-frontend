@@ -31,6 +31,13 @@ export default createApi({
           body,
         }),
       }),
+
+      getOrders: builder.query({
+        query: () => ({
+          url: "/orders",
+          method: "GET",
+        }),
+      }),
     }
   },
 })
