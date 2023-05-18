@@ -1,11 +1,17 @@
 import { Stack, Typography } from "@mui/material"
+import ItemCarousel from "./ItemCarousel"
 import BuyNowButton from "./button/BuyNowButton"
 import AddToCartButton from "./button/AddToCartButton"
-import ItemCarousel from "./ItemCarousel"
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"
+import { Link } from "react-router-dom"
 
 const ItemDetail = ({ item }) => {
   return (
-    <Stack m="auto" p="28px">
+    <Stack m="auto" p="28px" gap={3}>
+      <Link to="/shop" style={{ alignSelf: "end" }}>
+        <ArrowBackIcon fontSize="large" sx={{ display: { xs: "block", md: "none" } }} />
+      </Link>
+
       {item ? (
         <Stack sx={{ flexDirection: { xs: "column", md: "row" }, gap: { xs: 0, md: 4 } }}>
           <ItemCarousel images={[item.thumbnail, ...item.images.map((img) => img.link)]} />
