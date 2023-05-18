@@ -82,12 +82,7 @@ const Cart = () => {
                 </IconButton>
 
                 <Stack flexGrow={1} gap={3.5} sx={{ flexDirection: { xs: "column", sm: "row" } }}>
-                  <Box
-                    component="img"
-                    src={item.thumbnail}
-                    borderRadius="6px"
-                    sx={{ height: { xs: "120px", sm: "90px" }, width: { xs: "180px", sm: "90px" } }}
-                  />
+                  <Box component="img" src={item.thumbnail} borderRadius="6px" height="90px" width="90px" />
 
                   <Stack gap={1}>
                     <Stack>
