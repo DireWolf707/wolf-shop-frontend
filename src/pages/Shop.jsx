@@ -1,8 +1,6 @@
 import { useEffect } from "react"
-import { Stack } from "@mui/material"
 import { itemApi } from "../store"
 import ItemList from "../components/item/ItemList"
-import ItemListSkeleton from "../components/item/skeleton/ItemListSkeleton"
 import requestHandler from "../utils/requestHandler"
 
 const Shop = () => {
@@ -12,13 +10,7 @@ const Shop = () => {
     requestHandler(fetchItems().unwrap(), "fetching products", "products fetched")
   }, [])
 
-  return (
-    <Stack flexGrow={1}>
-      {data && <ItemList items={data.data} />}
-
-      {!data && <ItemListSkeleton />}
-    </Stack>
-  )
+  return <ItemList items={data?.data} />
 }
 
 export default Shop

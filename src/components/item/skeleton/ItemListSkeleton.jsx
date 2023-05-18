@@ -2,7 +2,7 @@ import { Stack, Button, Typography, Skeleton } from "@mui/material"
 
 const ItemListSkeleton = ({ count = 10 }) => {
   return (
-    <Stack flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="strech" gap={2} p="20px">
+    <>
       {Array(count)
         .fill(0)
         .map((_, idx) => (
@@ -35,7 +35,7 @@ const ItemListSkeleton = ({ count = 10 }) => {
             </Stack>
           </Stack>
         ))}
-    </Stack>
+    </>
   )
 }
 
