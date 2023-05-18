@@ -4,7 +4,7 @@ import LoggedInRoute from "./components/wrapper/LoggedInRoute"
 import SocketProvider from "./components/wrapper/SocketProvider"
 import { Stack } from "@mui/material"
 import { Routes, Route } from "react-router-dom"
-import { Home, Profile, Shop, Orders, Error404, Error500 } from "./pages"
+import { Home, Profile, Shop, Orders, Item, Error404, Error500 } from "./pages"
 import { useSelector } from "./store"
 import Cart from "./components/cart/Cart"
 import Checkout from "./components/checkout/Checkout"
@@ -28,6 +28,7 @@ const App = () => {
         {/* Socket Disabled Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:itemId" element={<Item />} />
 
         {/* Socket Enabled Routes */}
         {/* <Route element={<SocketProvider />}></Route> */}
